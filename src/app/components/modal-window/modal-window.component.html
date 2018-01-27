@@ -1,0 +1,27 @@
+﻿<div 
+  class="modal fade" 
+  bsModal
+  #modalPopup="bs-modal" 
+  [config]="{ 'backdrop': 'static' }"
+  role="dialog" 
+  tabindex="-1" 
+  aria-hidden="true"  
+  aria-labelledby="myLargeModalLabel" 
+  (onHide)="closeModalHandler()">
+  <div [ngClass]="['modal-dialog', modalSize]">
+    <div class="modal-content">
+      <!-- modal header -->
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{(windowTitle ? windowTitle : title)}}</h4>
+        <button *ngIf="showClose" type="button" class="close pull-right" (click)="hidePopup()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- modal body -->
+      <div class="modal-body">
+        <!-- modal content provided within component tags -->
+        <ng-content></ng-content> 
+      </div>
+    </div>
+  </div>
+</div>
