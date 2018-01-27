@@ -1,6 +1,6 @@
 export enum StageType {
-   Barrels,
-   Rivets,
-   Elevators,
-   Pies
+   Barrels = 'Barrels',
+   Rivets = 'Rivets',
+   Elevators = 'Elevators',
+   Pies = 'Pies',
 }

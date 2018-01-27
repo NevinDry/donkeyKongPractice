@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import * as _ from 'lodash';    
+
 import { ModalWindowComponent } from "../modal-window/modal-window.component";
 import { Stage } from "../../models/Stage";
 import { ALLSTAGES } from "../../data/AllStages"
 import { Game } from "../../models/Game";
-import { Life } from "../../models/Life";
+import { Death } from "../../models/Death";
 import { StageType } from "../../models/enums/StageType";
 @Component({
   selector: 'app-new-game',
@@ -16,11 +18,13 @@ export class NewGameComponent implements OnInit {
   game: Game = new Game(
                   new Date,
                   0,
-                  new Life('', new Stage(1, 1, StageType.Barrels)),
-                  new Life('', new Stage(1, 1, StageType.Barrels)),
-                  new Life('', new Stage(1, 1, StageType.Barrels)),
-                  new Life('', new Stage(1, 1, StageType.Barrels)),
+                  new Death('', new Stage(1, 1, StageType.Barrels), false),
+                  new Death('', new Stage(1, 1, StageType.Barrels), false),
+                  new Death('', new Stage(1, 1, StageType.Barrels), false),
+                  new Death('', new Stage(1, 1, StageType.Barrels), false),
               );
+
+ stageTypes = StageType;
 
   @ViewChild('newGameFormModal') public newGameFormModal: ModalWindowComponent;
   bsValue: Date = new Date();
@@ -29,11 +33,31 @@ export class NewGameComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.game);
-    this.allStages = ALLSTAGES;
+    this.allStages = _.values(_.groupBy(ALLSTAGES, 'level'));    
+    console.log(this.allStages);
   }
 
   openNewGameModal() {
     this.newGameFormModal.showPopup();
   }
 
+  setFirstDeath(stage:Stage){
+    this.game.firstDeath.stage = stage;
+  }
+
+  setSecondDeath(stage:Stage){
+    this.game.secondDeath.stage = stage;
+  }
+
+  setThirdDeath(stage:Stage){
+    this.game.thirdDeath.stage = stage;
+  }
+
+  setFourthDeath(stage:Stage){
+    this.game.fourthDeath.stage = stage;
+  }
+
+  submitGame(){
+    console.log(this.game);
+  }
 }

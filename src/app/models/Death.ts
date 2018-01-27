@@ -2,7 +2,7 @@ import {
     Stage
 } from './Stage';
 
-export class Life {
+export class Death {
 
     comment: string;
     stage: Stage;

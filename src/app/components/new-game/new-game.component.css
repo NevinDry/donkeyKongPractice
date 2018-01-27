@@ -1,5 +1,14 @@
 .scrollable-menu {
     height: auto;
-    max-height: 200px;
+    max-height: 300px;
+    width: 100%;
     overflow-x: hidden;
+}
+
+.scrollable-menu .dropdown-item{
+    background-color: white;
+}
+
+.scrollable-menu .dropdown-item:hover{
+    background-color: darkseagreen;
 }

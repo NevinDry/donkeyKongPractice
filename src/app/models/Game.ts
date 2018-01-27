@@ -1,27 +1,27 @@
 import {
-    Life
-} from './Life';
+    Death
+} from './Death';
 
 export class Game {
     date: Date;
     score: number;
-    firstLife: Life;
-    secondLife: Life;
-    thirdLife: Life;
-    fourtLife: Life;
+    firstDeath: Death;
+    secondDeath: Death;
+    thirdDeath: Death;
+    fourthDeath: Death;
     constructor(
         date: Date,
         score: number,
-        firstLife: Life,
-        secondLife: Life,
-        thirdLife: Life,
-        fourtLife: Life,
+        firstDeath: Death,
+        secondDeath: Death,
+        thirdDeath: Death,
+        fourthDeath: Death,
     ) {
         this.date = date;
         this.score = score;
-        this.firstLife = firstLife;
-        this.secondLife = secondLife;
-        this.thirdLife = thirdLife;
-        this.fourtLife = fourtLife;
+        this.firstDeath = firstDeath;
+        this.secondDeath = secondDeath;
+        this.thirdDeath = thirdDeath;
+        this.fourthDeath = fourthDeath;
     }
 }
