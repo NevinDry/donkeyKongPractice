@@ -15,6 +15,7 @@ import { NewGameComponent } from './components/new-game/new-game.component';
 import {
   AppRoutingModule
 } from './app.routes';
+import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {
     HomeComponent,
     NavComponent,
     NewGameComponent,
-    ModalWindowComponent
+    ModalWindowComponent,
+    AuthComponent
   ],
   imports: [
     FormsModule,

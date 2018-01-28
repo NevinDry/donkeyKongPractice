@@ -4,13 +4,12 @@
   <a (click)="goHome()" class="navbar-brand text-white d-none d-sm-block">
         Donkey Kong Practice tool
     </a>
-
-
-<div class="ml-auto">
-  <a class="navbar-brand" href="#">Tips</a>
-  <a class="navbar-brand ml-4" href="#">Your Name</a>
-</div>
-  
-
-
+  <div class="ml-auto">
+    <a class="navbar-brand" href="#">Tips</a>
+    <a class="navbar-brand ml-4" (click)="openAuthModal()" href="javascript:;">Sign in</a>
+  </div>
 </nav>
+
+<app-modal-window #authModal [title]="'Ready for some Donkey Kong ?'" [modalSize]="'modal-xs'" [showClose]="true">
+  <app-auth></app-auth>
+</app-modal-window>

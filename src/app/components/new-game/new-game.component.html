@@ -13,12 +13,12 @@
       <div class="form-group col-12 row">
         <label class="input-label">First Death</label>
         <div class="input-group dropdown w-1000">
-          <button class="btn btn-primary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonFirst" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
               Stage : <b>L.{{game.firstDeath.stage.level}} {{game.firstDeath.stage.stageType}} {{game.firstDeath.stage.position}}</b>
              <img class="pl-3" [src]="game.firstDeath.stage.getIcon()" /> 
           </button>
-          <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButtonFirst">
             <div *ngFor="let stageLevel of allStages">
               <span class="font-weight-light">Level {{stageLevel[0].level}}</span>
               <a *ngFor="let stage of stageLevel" class="dropdown-item" (click)="setFirstDeath(stage)" href="javascript:;">
@@ -42,12 +42,12 @@
       <div class="form-group col-12 row">
         <label class="input-label">Second Death</label>
         <div class="input-group dropdown w-100">
-          <button class="btn btn-primary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonSecond" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
                Stage : <b>L.{{game.secondDeath.stage.level}}  {{game.secondDeath.stage.stageType}} {{game.secondDeath.stage.position}}</b>
               <img class="pl-3" [src]="game.secondDeath.stage.getIcon()" /> 
           </button>
-          <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButtonSecond">
             <div *ngFor="let stageLevel of allStages">
               <div *ngIf="stageLevel[0].level >= game.firstDeath.stage.level">
                 <span class="font-weight-light">Level {{stageLevel[0].level}}</span>
@@ -72,12 +72,12 @@
       <div class="form-group col-12 row">
         <label class="input-label">Third Death</label>
         <div class="input-group dropdown w-100">
-          <button class="btn btn-primary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonThird" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
                Stage :  <b>L.{{game.thirdDeath.stage.level}} {{game.thirdDeath.stage.stageType}} {{game.thirdDeath.stage.position}}</b>
               <img class="pl-3" [src]="game.thirdDeath.stage.getIcon()" /> 
           </button>
-          <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButtonThird">
             <div *ngFor="let stageLevel of allStages">
               <span class="font-weight-light">Level {{stageLevel[0].level}}</span>
               <a *ngFor="let stage of stageLevel" class="dropdown-item" (click)="setThirdDeath(stage)" href="javascript:;">
@@ -101,12 +101,12 @@
       <div class="form-group col-12 row">
         <label class="input-label">Fourth Death</label>
         <div class="input-group dropdown w-100">
-          <button class="btn btn-primary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonFourth" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
                Stage : <b>L.{{game.fourthDeath.stage.level}} {{game.fourthDeath.stage.stageType}} {{game.fourthDeath.stage.position}} </b>
               <img class="pl-3" [src]="game.fourthDeath.stage.getIcon()" /> 
           </button>
-          <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButtonFourth">
             <div *ngFor="let stageLevel of allStages">
               <span class="font-weight-light">Level {{stageLevel[0].level}}</span>
               <a *ngFor="let stage of stageLevel" class="dropdown-item" (click)="setFourthDeath(stage)" href="javascript:;">
