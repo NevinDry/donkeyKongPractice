@@ -11,5 +11,5 @@
 </nav>
 
 <app-modal-window #authModal [title]="'Ready for some Donkey Kong ?'" [modalSize]="'modal-xs'" [showClose]="true">
-  <app-auth></app-auth>
+  <app-auth (closeModal)="onCloseModalEvent($event);" ></app-auth>
 </app-modal-window>

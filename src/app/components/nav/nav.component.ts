@@ -18,4 +18,8 @@ export class NavComponent implements OnInit {
  openAuthModal(){
    this.authModal.showPopup();
  }
+
+ onCloseModalEvent(){
+   this.authModal.hidePopup();
+ }
 }

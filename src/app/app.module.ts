@@ -14,15 +14,16 @@ import { NavComponent } from './components/nav/nav.component';
 import { ModalWindowComponent } from './components/modal-window/modal-window.component';
 import { NewGameComponent } from './components/new-game/new-game.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 import { AuthenticationService } from "./services/auth.service";
-
+import { UserService } from "./services/user.service";
+import { AlertService } from "./services/alert.service";
 
 import {
   AppRoutingModule
 } from './app.routes';
-import { UserService } from "./services/user.service";
-import { AlertService } from "./services/alert.service";
+
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AlertService } from "./services/alert.service";
     NavComponent,
     NewGameComponent,
     ModalWindowComponent,
-    AuthComponent
+    AuthComponent,
+    AlertComponent
   ],
   imports: [
     FormsModule,
