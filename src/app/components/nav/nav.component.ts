@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalWindowComponent } from "../modal-window/modal-window.component";
+import { AuthenticationService } from "../../services/auth.service";
+import { User } from "../../models/User";
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +12,9 @@ export class NavComponent implements OnInit {
   
   @ViewChild('authModal') public authModal: ModalWindowComponent;
 
-  constructor() { }
+  constructor(private authService:AuthenticationService) { 
+      this.authService.init();
+  }
 
   ngOnInit() {
   }

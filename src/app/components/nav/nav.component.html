@@ -3,13 +3,22 @@
   <img class="mr-2 navbar-brand vendor-logo " src="assets/logo.png" alt="Portal Logo" />
   <a (click)="goHome()" class="navbar-brand text-white d-none d-sm-block">
         Donkey Kong Practice tool
-    </a>
-  <div class="ml-auto">
-    <a class="navbar-brand" href="#">Tips</a>
-    <a class="navbar-brand ml-4" (click)="openAuthModal()" href="javascript:;">Sign in</a>
-  </div>
+  </a>
+  <ul class="ml-auto navbar-nav mr-3">
+    <li class="mr-0 mt-3 mt-md-0">
+      <a class="navbar-text pb-0" href="#">Tips</a>
+    </li>
+    <li class="mr-0 mt-3 mt-md-0 ml-4">
+      <a *ngIf="authService.user" class="navbar-text pb-0" href="javascript:;"> Welcome {{authService.user.name}} !! </a>
+    </li>
+    <!-- nav login -->
+    <li class="mr-0 mt-3 mt-md-0">
+      <button type="button" *ngIf="!authService.user" class="btn btn-primary ml-4" (click)="openAuthModal()">Sign in</button>
+      <button type="button" *ngIf="authService.user" class="btn btn-warning ml-4" (click)="authService.logout()">Log out</button>
+    </li>
+  </ul>
 </nav>
 
 <app-modal-window #authModal [title]="'Ready for some Donkey Kong ?'" [modalSize]="'modal-xs'" [showClose]="true">
-  <app-auth (closeModal)="onCloseModalEvent($event);" ></app-auth>
+  <app-auth (closeModal)="onCloseModalEvent($event);"></app-auth>
 </app-modal-window>

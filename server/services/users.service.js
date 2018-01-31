@@ -30,6 +30,7 @@ function authenticate(name, password) {
       deferred.resolve({
         _id: user._id,
         name: user.name,
+        exp: new Date().setDate(new Date() + 60),
         token: jwt.sign({
           sub: user._id
         }, config.secret)
