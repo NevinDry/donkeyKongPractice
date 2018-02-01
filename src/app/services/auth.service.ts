@@ -1,11 +1,14 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 import { environment } from '../../environments/environment';
 import { UserSignIn } from "../models/UserSignIn";
 import { User } from "../models/User";
+import { HttpResponseCusom } from "../models/HttpResponseCusom";
 
 @Injectable()
 export class AuthenticationService {
@@ -20,15 +23,18 @@ export class AuthenticationService {
 
 
     login(user: UserSignIn) {
-        return this.http.post<any>(environment.apiUrl + '/users/authenticate', user)
-            .map(user => {
+        return this.http.post(environment.apiUrl + '/users/authenticate', user)
+            .map((response: HttpResponseCusom) => {
                 // login successful if there's a jwt token in the response
-                if (user && user.token) {
+                if (response.data.user && response.data.user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    localStorage.setItem('currentUser', JSON.stringify(response.data.user));
+                    this.init();
                 }
-
-                this.init();
+                return response;
+            })
+            .catch((response) => {
+                return Observable.throw(response.error);
             });
     }
 

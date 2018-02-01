@@ -25,9 +25,21 @@ app.use(expressJwt({
  
 // routes
 app.use('/users', require('./routes/users.routes'));
+app.use('/games', require('./routes/games.routes'));
  
+
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    return res.status(403).send({
+      success: false,
+      message: 'Please log in again'
+    });
+  }
+});
+
 // start server
 var port = process.env.NODE_ENV === 'production' ? 80 : 4000;
 var server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });
+

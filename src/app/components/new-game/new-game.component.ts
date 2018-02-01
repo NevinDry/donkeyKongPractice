@@ -7,6 +7,7 @@ import { ALLSTAGES } from "../../data/AllStages"
 import { Game } from "../../models/Game";
 import { Death } from "../../models/Death";
 import { StageType } from "../../models/enums/StageType";
+import { GameService } from "../../services/game.service";
 @Component({
   selector: 'app-new-game',
   templateUrl: './new-game.component.html',
@@ -29,7 +30,9 @@ export class NewGameComponent implements OnInit {
   @ViewChild('newGameFormModal') public newGameFormModal: ModalWindowComponent;
   bsValue: Date = new Date();
 
-  constructor() { }
+  constructor(
+    private gameService: GameService
+  ) { }
 
   ngOnInit() {
     console.log(this.game);
@@ -58,6 +61,13 @@ export class NewGameComponent implements OnInit {
   }
 
   submitGame(){
-    console.log(this.game);
+
+this.gameService.test().subscribe(
+      data => {
+       console.log(data);
+      },
+      error => {
+       console.log(error);
+      });
   }
 }

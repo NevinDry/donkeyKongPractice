@@ -7,6 +7,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ModalModule, BsDatepickerModule  } from "ngx-bootstrap";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { JwtInterceptorProvider } from "./helpers/jwt.interceptor";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -19,6 +20,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { AuthenticationService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
 import { AlertService } from "./services/alert.service";
+import { GameService } from "./services/game.service";
 
 import {
   AppRoutingModule
@@ -43,7 +45,7 @@ import {
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot()
   ],
-  providers: [AuthenticationService, UserService, AlertService, HttpClientModule],
+  providers: [JwtInterceptorProvider, AuthenticationService, UserService, AlertService, GameService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

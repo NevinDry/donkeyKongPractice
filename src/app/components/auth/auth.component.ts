@@ -6,6 +6,7 @@ import { AlertService } from "../../services/alert.service";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "../../services/auth.service";
 import { UserSignIn } from "../../models/UserSignIn";
+import { HttpResponseCusom } from "../../models/HttpResponseCusom";
 
 @Component({
   selector: 'app-auth',
@@ -32,24 +33,24 @@ export class AuthComponent implements OnInit {
   register() {
     this.userService.create(this.userRegister)
       .subscribe(
-      data => {
+      (data: HttpResponseCusom) => {
         this.closeModal.emit();
-        this.alertService.success('Registration successful, Sign in now !', true);
+        this.alertService.success(data.message, true);
       },
-      error => {
-        this.errorRegister = error.error;
+      (error: HttpResponseCusom) => {
+        this.errorRegister = error.message;
       });
   }
 
   signIn() {
     this.authService.login(this.userSignIn)
       .subscribe(
-      data => {
+      (data: HttpResponseCusom) => {
         this.closeModal.emit();
-        this.alertService.success('Login successful', true);
+        this.alertService.success(data.message, true);
       },
-      error => {
-        this.errorSignIn = error.error;
+      (error: HttpResponseCusom) => {
+        this.errorSignIn = error.message;
       });
   }
 
