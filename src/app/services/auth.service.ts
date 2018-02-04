@@ -26,9 +26,9 @@ export class AuthenticationService {
         return this.http.post(environment.apiUrl + '/users/authenticate', user)
             .map((response: HttpResponseCusom) => {
                 // login successful if there's a jwt token in the response
-                if (response.data.user && response.data.user.token) {
+                if (response.data.name && response.data.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(response.data.user));
+                    localStorage.setItem('currentUser', JSON.stringify(response.data));
                     this.init();
                 }
                 return response;
@@ -53,7 +53,8 @@ export class AuthenticationService {
     isLoggedIn() {
         if (this.getToken()) {
             var exp = JSON.parse(this.getToken()).exp;
-            if (exp < new Date().setMonth(new Date().getMonth() + 1)) {
+            var date  = new Date().getTime();
+            if (date < exp) {
                 this.user = JSON.parse(this.getToken());
             }
         }

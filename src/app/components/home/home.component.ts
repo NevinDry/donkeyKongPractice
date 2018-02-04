@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { GameService } from "../../services/game.service";
+import { HttpResponseCusom } from "../../models/HttpResponseCusom";
+import { Game } from "../../models/Game";
+import { AlertService } from "../../services/alert.service";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  private games: Game[];
+
+  constructor(
+    private gameService:GameService,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
+    this.gameService.getAll(new Date()).subscribe(
+      (response: HttpResponseCusom) => {
+        this.games = response.data
+      },
+      (error: HttpResponseCusom) => {
+        this.alertService.error(error.message, true);
+      });
   }
 
 }

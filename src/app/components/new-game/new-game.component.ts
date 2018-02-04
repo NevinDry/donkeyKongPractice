@@ -8,6 +8,8 @@ import { Game } from "../../models/Game";
 import { Death } from "../../models/Death";
 import { StageType } from "../../models/enums/StageType";
 import { GameService } from "../../services/game.service";
+import { HttpResponseCusom } from "../../models/HttpResponseCusom";
+import { AlertService } from "../../services/alert.service";
 @Component({
   selector: 'app-new-game',
   templateUrl: './new-game.component.html',
@@ -31,6 +33,7 @@ export class NewGameComponent implements OnInit {
   bsValue: Date = new Date();
 
   constructor(
+    private alertService: AlertService,
     private gameService: GameService
   ) { }
 
@@ -62,12 +65,12 @@ export class NewGameComponent implements OnInit {
 
   submitGame(){
 
-this.gameService.test().subscribe(
-      data => {
-       console.log(data);
+this.gameService.create(this.game).subscribe(
+      (data: HttpResponseCusom) => {
+        this.alertService.success(data.message, true);
       },
-      error => {
-       console.log(error);
+      (error: HttpResponseCusom) => {
+        this.alertService.error(error.message, true);
       });
   }
 }

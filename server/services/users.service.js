@@ -27,13 +27,18 @@ function authenticate(name, password) {
 
     if (user && bcrypt.compareSync(password, user.hash)) {
       // authentication successful
+      var date = new Date();
+      date.setMonth(date.getMonth() + 1);
       deferred.resolve({
         _id: user._id,
         name: user.name,
-        exp: new Date().setDate(new Date() + 60),
+        exp: date.getTime(),
         token: jwt.sign({
-          sub: user._id
-        }, config.secret)
+          _id: user._id,
+          name: user.name,
+        }, config.secret, {
+          expiresIn: 60 * 43800
+        })
       });
     } else {
       // authentication failed

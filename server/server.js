@@ -21,7 +21,7 @@ app.use(expressJwt({
         }
         return null;
     }
-}).unless({ path: ['/users/authenticate', '/users/register'] }));
+}).unless({ path: ['/users/authenticate', '/users/register', 'games/getAll'] }));
  
 // routes
 app.use('/users', require('./routes/users.routes'));

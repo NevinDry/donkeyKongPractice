@@ -2,22 +2,44 @@ var config = require('../config.json');
 var express = require('express');
 var router = express.Router();
  
+var gameService = require('../services/games.service');
+
 // routes
-router.get('/test', test);
+router.post('/create', create);
+router.get('/getAll', getAll);
  
 module.exports = router;
  
-function test(req, res) {
-    console.log("coucou");
-    // userService.getById(req.user.sub)
-    //     .then(function (user) {
-    //         if (user) {
-    //             res.send(user);
-    //         } else {
-    //             res.sendStatus(404);
-    //         }
-    //     })
-    //     .catch(function (err) {
-    //         res.status(400).send(err);
-    //     });
+function create(req, res) {
+    gameService.create(req.body, req.user._id)
+    .then(function () {
+      res.status(200).send({
+        success: true,
+        message: 'Game added'
+      });
+    })
+    .catch(function (err) {
+      return res.status(500).send({
+        success: false,
+        message: err
+      });
+    });
+}
+
+function getAll(req, res) {
+    gameService.getAll(req.date)
+    .then(function (games) {
+      console.log(games);
+      res.status(200).send({
+        success: true,
+        message: 'Games harvested',
+        data: games 
+      });
+    })
+    .catch(function (err) {
+      return res.status(500).send({
+        success: false,
+        message: err
+      });
+    });
 }
