@@ -19,16 +19,16 @@ export class Stage {
     public getIcon() {
         switch (this.stageType){
             case StageType.Barrels : {
-                return '/assets/barrel.jpg'
+                return 'assets/barrel.jpg'
             }
             case StageType.Rivets : {
-                return '/assets/rivet.jpg'
+                return 'assets/rivet.jpg'
             }
             case StageType.Elevators : {
-                return '/assets/elevator.jpg'
+                return 'assets/elevator.jpg'
             }
             case StageType.Pies : {
-                return '/assets/pie.jpg'
+                return 'assets/pie.jpg'
             }
         }
         }

@@ -21,7 +21,7 @@ app.use(expressJwt({
         }
         return null;
     }
-}).unless({ path: ['/users/authenticate', '/users/register', 'games/getAll'] }));
+}).unless({ path: ['/users/authenticate', '/users/register', '/games/getAll'] }));
  
 // routes
 app.use('/users', require('./routes/users.routes'));
@@ -37,8 +37,14 @@ app.use(function (err, req, res, next) {
   }
 });
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // start server
-var port = process.env.NODE_ENV === 'production' ? 80 : 4000;
+var port = process.env.NODE_ENV === 'production' ? 80 : 8080;
 var server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });
