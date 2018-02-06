@@ -6,3 +6,16 @@
 .donkeyNav {
   height: 50px;
 }
+
+.donkeyNav ul li a svg, .donkeyNav ul li svg{
+  font-size:  2.35em;
+}
+
+.donkeyNav ul li a{
+  text-decoration: none;
+}
+
+.donkeyNav ul li a:hover, .donkeyNav ul li svg:hover{
+  color: white;
+}
+

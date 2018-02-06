@@ -1,3 +1,1 @@
-<div class="w-50 m-auto text-center" *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
-    {{message.text}}
-</div>
+<div [@pop-down]="" *ngIf="message" class="navbarAlert text-center w-100 position-fixed" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">{{message.text}}</div>

@@ -19,13 +19,6 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.gameService.getAll(new Date()).subscribe(
-      (response: HttpResponseCusom) => {
-        this.games = response.data
-      },
-      (error: HttpResponseCusom) => {
-        this.alertService.error(error.message, true);
-      });
   }
 
 }

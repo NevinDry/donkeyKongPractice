@@ -67,9 +67,11 @@ export class NewGameComponent implements OnInit {
 
 this.gameService.create(this.game).subscribe(
       (data: HttpResponseCusom) => {
+        this.newGameFormModal.hidePopup();
         this.alertService.success(data.message, true);
       },
       (error: HttpResponseCusom) => {
+        this.newGameFormModal.hidePopup();
         this.alertService.error(error.message, true);
       });
   }

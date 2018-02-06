@@ -1,16 +1,16 @@
 <button type="button" (click)="openNewGameModal()" class="btn btn-danger">Add Game</button>
 
 <app-modal-window #newGameFormModal [title]="'Add New Game'" [modalSize]="'modal-xs'" [showClose]="true">
-  <div class="container">
+  <div class="">
     <form #newGameForm="ngForm" name="newGameForm">
-      <div class="form-group col-12 row">
+      <div class="form-group col-12 row pr-0">
         <label class="input-label">Date</label>
         <div class="input-group">
           <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [(bsValue)]="bsValue">
         </div>
       </div>
 
-      <div class="form-group col-12 row">
+      <div class="form-group col-12 row pr-0">
         <label class="input-label">First Death</label>
         <div class="input-group dropdown w-1000">
           <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonFirst" data-toggle="dropdown" aria-haspopup="true"
@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <div class="form-group col-12 row">
+      <div class="form-group col-12 row pr-0">
         <label class="input-label">Second Death</label>
         <div class="input-group dropdown w-100">
           <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonSecond" data-toggle="dropdown" aria-haspopup="true"
@@ -69,7 +69,7 @@
         </div>
       </div>
 
-      <div class="form-group col-12 row">
+      <div class="form-group col-12 row pr-0">
         <label class="input-label">Third Death</label>
         <div class="input-group dropdown w-100">
           <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonThird" data-toggle="dropdown" aria-haspopup="true"
@@ -98,7 +98,7 @@
         </div>
       </div>
 
-      <div class="form-group col-12 row">
+      <div class="form-group col-12 row pr-0">
         <label class="input-label">Fourth Death</label>
         <div class="input-group dropdown w-100">
           <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonFourth" data-toggle="dropdown" aria-haspopup="true"
