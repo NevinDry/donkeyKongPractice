@@ -24,7 +24,7 @@ export class GameStatComponent implements OnInit {
         this.calculateStats();
       },
       (error: HttpResponseCusom) => {
-        this.alertService.error(error.message, true);
+        this.alertService.error(error.message || "An error has occured", true);
       });
   }
 

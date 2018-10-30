@@ -6,12 +6,12 @@ var db = mongo.db(config.connectionString, {
 });
 db.bind('games');
 
-var service = {};
+var worker = {};
 
-service.create = create;
-service.getAll = getAll;
+worker.create = create;
+worker.getAll = getAll;
 
-module.exports = service;
+module.exports = worker;
 
 function create(game, userId) {
   var deferred = Q.defer();

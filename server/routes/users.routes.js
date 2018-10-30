@@ -1,7 +1,7 @@
 var config = require('../config.json');
 var express = require('express');
 var router = express.Router();
-var userService = require('../services/users.service');
+var userWorker = require('../workers/users.worker');
 
 // routes
 router.post('/authenticate', authenticate);
@@ -11,7 +11,7 @@ router.get('/current', getCurrent);
 module.exports = router;
 
 function authenticate(req, res) {
-  userService.authenticate(req.body.name, req.body.password)
+  userWorker.authenticate(req.body.name, req.body.password)
     .then(function (user) {
       if (user) {
         // authentication successful
@@ -37,7 +37,7 @@ function authenticate(req, res) {
 }
 
 function register(req, res) {
-  userService.create(req.body)
+  userWorker.create(req.body)
     .then(function () {
       res.status(200).send({
         success: true,
@@ -54,7 +54,7 @@ function register(req, res) {
 
 
 function getCurrent(req, res) {
-  userService.getById(req.user.sub)
+  userWorker.getById(req.user.sub)
     .then(function (user) {
       if (user) {
         res.send(user);

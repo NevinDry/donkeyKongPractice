@@ -9,14 +9,14 @@ var db = mongo.db(config.connectionString, {
 });
 db.bind('users');
 
-var service = {};
+var worker = {};
 
-service.authenticate = authenticate;
-service.getAll = getAll;
-service.getById = getById;
-service.create = create;
+worker.authenticate = authenticate;
+worker.getAll = getAll;
+worker.getById = getById;
+worker.create = create;
 
-module.exports = service;
+module.exports = worker;
 
 function authenticate(name, password) {
   var deferred = Q.defer();

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 
@@ -54,7 +54,8 @@ import { GameStatComponent } from './components/game-stat/game-stat.component';
     UserService,
     AlertService,
     GameService,
-    HttpClientModule
+    HttpClientModule,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
