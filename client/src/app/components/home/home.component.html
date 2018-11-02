@@ -1,5 +1,6 @@
 <div class="container-fluid  ">
-  <app-new-game></app-new-game>
+
+   <app-new-game *ngIf="authService.user"></app-new-game>
 
    <app-game-stat></app-game-stat>
 

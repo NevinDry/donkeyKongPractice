@@ -13,8 +13,8 @@
       <div class="form-group col-12 row pr-0">
         <label class="input-label">First Death</label>
         <div class="input-group dropdown w-1000">
-          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonFirst" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonFirst" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
               Stage : <b>L.{{game.firstDeath.stage.level}} {{game.firstDeath.stage.stageType}} {{game.firstDeath.stage.position}}</b>
              <img class="pl-3" [src]="game.firstDeath.stage.getIcon()" /> 
           </button>
@@ -30,7 +30,7 @@
             </div>
           </div>
         </div>
-        <div *ngIf="game.firstDeath.stage.stageType == stageTypes.Barrels" class="form-check pt-1">
+        <div *ngIf="game.firstDeath.stage.stageType == StageType.Barrels" class="form-check pt-1">
           <input type="checkbox" class="form-check-input" [(ngModel)]="game.firstDeath.wild" name="firstCheck" id="firstCheck">
           <label class="form-check-label" for="firstCheck">Was it a wild barrel ?</label>
         </div>
@@ -42,8 +42,8 @@
       <div class="form-group col-12 row pr-0">
         <label class="input-label">Second Death</label>
         <div class="input-group dropdown w-100">
-          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonSecond" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonSecond" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
                Stage : <b>L.{{game.secondDeath.stage.level}}  {{game.secondDeath.stage.stageType}} {{game.secondDeath.stage.position}}</b>
               <img class="pl-3" [src]="game.secondDeath.stage.getIcon()" /> 
           </button>
@@ -60,7 +60,7 @@
             </div>
           </div>
         </div>
-        <div *ngIf="game.secondDeath.stage.stageType == stageTypes.Barrels" class="form-check pt-1">
+        <div *ngIf="game.secondDeath.stage.stageType == StageType.Barrels" class="form-check pt-1">
           <input type="checkbox" class="form-check-input" [(ngModel)]="game.secondDeath.wild" name="secondCheck" id="secondCheck">
           <label class="form-check-label" for="secondCheck">Was it a wild barrel ?</label>
         </div>
@@ -72,8 +72,8 @@
       <div class="form-group col-12 row pr-0">
         <label class="input-label">Third Death</label>
         <div class="input-group dropdown w-100">
-          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonThird" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonThird" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
                Stage :  <b>L.{{game.thirdDeath.stage.level}} {{game.thirdDeath.stage.stageType}} {{game.thirdDeath.stage.position}}</b>
               <img class="pl-3" [src]="game.thirdDeath.stage.getIcon()" /> 
           </button>
@@ -89,7 +89,7 @@
             </div>
           </div>
         </div>
-        <div *ngIf="game.thirdDeath.stage.stageType == stageTypes.Barrels" class="form-check pt-1">
+        <div *ngIf="game.thirdDeath.stage.stageType == StageType.Barrels" class="form-check pt-1">
           <input type="checkbox" [(ngModel)]="game.thirdDeath.wild" name="thirdCheck" class="form-check-input" id="thirdCheck">
           <label class="form-check-label" for="thirdCheck">Was it a wild barrel ?</label>
         </div>
@@ -101,8 +101,8 @@
       <div class="form-group col-12 row pr-0">
         <label class="input-label">Fourth Death</label>
         <div class="input-group dropdown w-100">
-          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonFourth" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonFourth" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
                Stage : <b>L.{{game.fourthDeath.stage.level}} {{game.fourthDeath.stage.stageType}} {{game.fourthDeath.stage.position}} </b>
               <img class="pl-3" [src]="game.fourthDeath.stage.getIcon()" /> 
           </button>
@@ -118,7 +118,7 @@
             </div>
           </div>
         </div>
-        <div *ngIf="game.fourthDeath.stage.stageType == stageTypes.Barrels" class="form-check pt-1">
+        <div *ngIf="game.fourthDeath.stage.stageType == StageType.Barrels" class="form-check pt-1">
           <input type="checkbox" class="form-check-input" [(ngModel)]="game.fourthDeath.wild" name="fourthCheck" id="fourthCheck">
           <label class="form-check-label" for="fourthCheck">Was it a wild barrel ?</label>
         </div>
@@ -126,8 +126,14 @@
           <input type="text" [(ngModel)]="game.fourthDeath.comment" class="form-control" name="fourthDeathComment" placeholder="Any comment...">
         </div>
       </div>
-      <div class="form-group col-12 row">
 
+      <div *ngIf="error" class="form-group col-12 row">
+        <div class="alert alert-danger w-100" role="alert">
+          {{error}}
+        </div>
+      </div>
+
+      <div class="form-group col-12 row">
         <div class="input-group">
           <button (click)="submitGame()" class="btn btn-success w-100 ml-auto" type="button">
             Add this game

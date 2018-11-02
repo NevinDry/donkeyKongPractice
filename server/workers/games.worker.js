@@ -1,37 +1,29 @@
-var config = require('../config.json');
 var Q = require('q');
-var mongo = require('mongoskin');
-var db = mongo.db(config.connectionString, {
-  native_parser: true
-});
-db.bind('games');
 
-var worker = {};
+var gameRepo = require('../repository/games.repository');
 
-worker.create = create;
-worker.getAll = getAll;
 
-module.exports = worker;
-
-function create(game, userId) {
-  var deferred = Q.defer();
-  game.user = userId;
-  db.games.insert(
-    game,
-    function (err, doc) {
-      if (err) deferred.reject(err.name + ': ' + err.message);
-      console.log("Game Created");
-      console.log(doc);
-      deferred.resolve();
-    });
-  return deferred.promise;
+module.exports.create = function (game) {
+  return new Promise(function (resolve, reject) {
+    gameRepo.create(game)
+      .then(function (result) {
+        resolve(result);
+      })
+      .catch(function (err) {
+        reject(err);
+      });
+  });
 };
 
-function getAll(fromDate) {
-  var deferred = Q.defer();
-  db.games.find().toArray(function (err, games) {
-    if (err) deferred.reject(err.name + ': ' + err.message);
-    deferred.resolve(games);
+module.exports.getAll = function (fromDate) {
+
+  return new Promise(function (resolve, reject) {
+    gameRepo.getAll(fromDate)
+      .then(function (result) {
+        resolve(result);
+      })
+      .catch(function (err) {
+        reject(err);
+      });
   });
-  return deferred.promise;
 };

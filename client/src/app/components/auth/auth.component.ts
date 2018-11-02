@@ -35,6 +35,7 @@ export class AuthComponent implements OnInit {
       .subscribe(
       (data: HttpResponseCusom) => {
         this.closeModal.emit();
+        this.errorSignIn = null;
         this.alertService.success(data.message, true);
       },
       (error: HttpResponseCusom) => {
@@ -47,6 +48,7 @@ export class AuthComponent implements OnInit {
       .subscribe(
       (data: HttpResponseCusom) => {
         this.closeModal.emit();
+        this.errorSignIn = null;
         this.alertService.success(data.message, true);
       },
       (error: HttpResponseCusom) => {

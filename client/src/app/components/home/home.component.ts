@@ -3,6 +3,7 @@ import { GameService } from "../../services/game.service";
 import { HttpResponseCusom } from "../../models/HttpResponseCusom";
 import { Game } from "../../models/Game";
 import { AlertService } from "../../services/alert.service";
+import { AuthenticationService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +12,9 @@ import { AlertService } from "../../services/alert.service";
 })
 export class HomeComponent implements OnInit {
 
-  private games: Game[];
 
-  constructor(
-    private gameService:GameService,
-    private alertService: AlertService
-  ) { }
+  constructor(private authService: AuthenticationService) 
+  { }
 
   ngOnInit() {
   }

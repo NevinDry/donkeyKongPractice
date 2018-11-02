@@ -9,8 +9,8 @@ var url = config.connectionString;
 var MongoDB = {
 	OpenConnection: function (onOpen) {
 		//BDD initialize
-		//console.log('Connection to the db ...');
-		MongoClient.connect(url, function (err, db) {
+		console.log('Connection to the db ...');
+		MongoClient.connect(url, function (err, client) {
 			
 			if (err) {
 				console.log(err);				
@@ -18,7 +18,7 @@ var MongoDB = {
 			}
 			else {
 				console.log("Connected successfully !");
-				onOpen(db);
+				onOpen(client.db('kong'), client);
 			}
 		});
 	}

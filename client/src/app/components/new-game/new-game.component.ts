@@ -17,6 +17,9 @@ import { AlertService } from "../../services/alert.service";
 })
 export class NewGameComponent implements OnInit {
 
+  error: string = "dsfsdf sdfgsdf sdf";
+  StageType = StageType;
+
   allStages: Stage[];
   game: Game = new Game(
     new Date,
@@ -27,8 +30,7 @@ export class NewGameComponent implements OnInit {
     new Death('', new Stage(1, 1, StageType.Barrels), false),
   );
 
-  stageTypes = StageType;
-
+  
   @ViewChild('newGameFormModal') public newGameFormModal: ModalWindowComponent;
   bsValue: Date = new Date();
 
@@ -67,10 +69,11 @@ export class NewGameComponent implements OnInit {
     this.gameService.create(this.game).subscribe(
       (data: HttpResponseCusom) => {
         this.newGameFormModal.hidePopup();
+        this.error = null;
         this.alertService.success(data.message, true);
       },
       (error: HttpResponseCusom) => {
-        this.newGameFormModal.hidePopup();
+        this.error = error.message;
         this.alertService.error(error.message, true);
       });
   }

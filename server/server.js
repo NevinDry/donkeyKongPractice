@@ -28,20 +28,19 @@ app.use('/users', require('./routes/users.routes'));
 app.use('/games', require('./routes/games.routes'));
  
 
-app.use(function (err, req, res, next) {
-  if (err.name === 'UnauthorizedError') {
-    return res.status(403).send({
-      success: false,
-      message: 'Please log in again'
-    });
-  }
-});
-
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+app.use(responseHandler);
+
+function responseHandler(response, req, res, next) {
+	console.log("-----------------HTTP RESPONSE-------------------");
+	console.log(response);
+	return res.status(response.status).json({message: response.message, data: response.data });
+}
 
 // start server
 var port = process.env.NODE_ENV === 'production' ? 80 : 8080;
