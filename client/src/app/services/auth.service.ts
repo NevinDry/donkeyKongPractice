@@ -9,16 +9,19 @@ import { environment } from '../../environments/environment';
 import { UserSignIn } from "../models/UserSignIn";
 import { User } from "../models/User";
 import { HttpResponseCusom } from "../models/HttpResponseCusom";
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthenticationService {
 
     user: User;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, public router: Router) { }
 
     init(): void {
-        this.isLoggedIn();
+        if(this.isLoggedIn()){
+            this.user = JSON.parse(this.getToken());
+        }
     }
 
 
@@ -43,7 +46,7 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         this.user = null;
-
+        this.router.navigate(['home']);
     }
 
     getToken = function () {
@@ -51,15 +54,19 @@ export class AuthenticationService {
     };
 
     isLoggedIn() {
-        if (this.getToken()) {
-            var exp = JSON.parse(this.getToken()).exp;
-            var date  = new Date().getTime();
+        let token = this.getToken();
+        if (token) {
+            var exp = JSON.parse(token).exp;
+            var date = new Date().getTime();
             if (date < exp) {
-                this.user = JSON.parse(this.getToken());
+                return true;
+            }else{
+                return false;
             }
         }
         else {
             this.logout();
+            return false;
         }
     }
 }

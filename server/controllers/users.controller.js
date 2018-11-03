@@ -42,3 +42,12 @@ module.exports.getCurrent = function (req, res, next) {
       next(new HttpResponses.HttpError('Error getting user', null, 500));
     });
 }
+
+
+module.exports.getCurrentUserInfo = function (req, res, next) {
+  console.log(req.user);
+  console.log(req.body);
+
+  next(new HttpResponses.HttpSucces(true, 200, 'YEEEEPPPP', null));
+
+}

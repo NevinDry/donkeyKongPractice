@@ -7,7 +7,7 @@ var userController = require('../controllers/users.controller');
 // routes
 router.post('/authenticate', userController.authenticate);
 router.post('/register', userController.register);
-router.get('/current', userController.getCurrent);
+router.get('/getCurrentUserInfo', userController.getCurrentUserInfo);
 
 module.exports = router;
 

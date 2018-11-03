@@ -13,7 +13,7 @@
 
     </li>
     <li *ngIf="authService.user" class="pl-3">
-        <a class="navbar-text pb-0 pt-0" href="#">
+        <a class="navbar-text pb-0 pt-0" [routerLink]="'/myBoard'" >
             <i class="far fa-user .d-inline .d-sm-none fa-lg"></i>
             <span class="d-none d-sm-inline">Welcome {{authService.user.name}}</span>
           </a>

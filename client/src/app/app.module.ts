@@ -27,6 +27,8 @@ import {
   AppRoutingModule
 } from './app.routes';
 import { GameStatComponent } from './components/game-stat/game-stat.component';
+import { MyBoardComponent } from './components/my-board/my-board.component';
+import { AuthGuardService } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { GameStatComponent } from './components/game-stat/game-stat.component';
     AuthComponent,
     AlertComponent,
     GameStatComponent,
+    MyBoardComponent,
   ],
   imports: [
     FormsModule,
@@ -55,6 +58,7 @@ import { GameStatComponent } from './components/game-stat/game-stat.component';
     AlertService,
     GameService,
     HttpClientModule,
+    AuthGuardService,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]

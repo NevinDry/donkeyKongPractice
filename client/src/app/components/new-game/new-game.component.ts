@@ -17,7 +17,7 @@ import { AlertService } from "../../services/alert.service";
 })
 export class NewGameComponent implements OnInit {
 
-  error: string = "dsfsdf sdfgsdf sdf";
+  error: string;
   StageType = StageType;
 
   allStages: Stage[];

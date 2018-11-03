@@ -1,4 +1,3 @@
-var config = require('../config.json');
 var MongoDB = require("../db");
 var usersCollection = "users";
 

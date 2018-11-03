@@ -18,8 +18,8 @@ export class UserService {
         return this.http.get<User[]>(environment.apiUrl + '/users');
     }
 
-    getById(_id: string) {
-        return this.http.get(environment.apiUrl + '/users/' + _id);
+    getCurrentUserInfo() {
+        return this.http.get(environment.apiUrl + '/users/getCurrentUserInfo');
     }
 
     create(user: UserRegister) {
